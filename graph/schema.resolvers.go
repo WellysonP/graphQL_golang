@@ -6,7 +6,6 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/WellysonP/graphQl/graph/model"
 )
@@ -104,7 +103,15 @@ func (r *queryResolver) Categories(ctx context.Context) ([]*model.Category, erro
 
 // Category is the resolver for the category field.
 func (r *queryResolver) Category(ctx context.Context, id string) (*model.Category, error) {
-	panic(fmt.Errorf("not implemented: Category - category"))
+	category, err := r.CategoryDB.FindByID(id)
+	if err != nil {
+		return nil, err
+	}
+	return &model.Category{
+		ID:          category.ID,
+		Name:        category.Name,
+		Description: &category.Description,
+	}, nil
 }
 
 // Courses is the resolver for the courses field.
@@ -130,7 +137,15 @@ func (r *queryResolver) Courses(ctx context.Context) ([]*model.Course, error) {
 
 // Course is the resolver for the course field.
 func (r *queryResolver) Course(ctx context.Context, id string) (*model.Course, error) {
-	panic(fmt.Errorf("not implemented: Course - course"))
+	course, err := r.CourseDB.FindByID(id)
+	if err != nil {
+		return nil, err
+	}
+	return &model.Course{
+		ID:          course.ID,
+		Name:        course.Name,
+		Description: &course.Description,
+	}, nil
 }
 
 // Category returns CategoryResolver implementation.
