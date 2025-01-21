@@ -41,9 +41,3 @@ Acesse a API GraphQL em `http://localhost:8080`.
 - `graph/schema.resolvers.go`: Contém os resolvers para as operações GraphQL.
 - `gqlgen.yml`: Configuração do gqlgen.
 - `README.md`: Este arquivo.
-
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request.
-
-## Licença
-Este projeto está licenciado sob a MIT License.
